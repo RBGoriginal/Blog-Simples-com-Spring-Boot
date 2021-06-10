@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Editar Post</title>
+		
+		<!-- CSS Blog -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<link href="/css/style.css" rel="stylesheet" >
+	</head>
+	
+	<body>
+		<header>
+			<nav class="navbar navbar-light bg-light">
+			  <div class="container-fluid">
+			    <img src="/img/RBGlogo.png" style="width:10%; margin-left:20%">
+			  </div>
+			</nav>			
+		</header>
+		<section>
+			<div class="container" >
+				<nav aria-label="breadcrumb">
+				  <ol class="breadcrumb">
+				    <li class="breadcrumb-item " aria-current="page"><a href="/Blog">Posts</a></li>
+				    <li class="breadcrumb-item " aria-current="page"><a th:href="@{/Blog/{id}(id=${post.id})}">Post</a></li>
+				    <li class="breadcrumb-item active" aria-current="page">Editar Post</li>
+				  </ol>
+				</nav>				
+				<div>
+					<div class="alert alert-danger" role="alert" th:if="${not #strings.isEmpty(Erro)}" style="width:40%">
+					  <span th:text="${Erro}"></span>
+					</div>
+					<form method="post" action="/Alterar" th:object="${post}">		
+						<input th:field="*{id}" style='display: none;'>
+						<div class="form-group">
+							<input type="text" class="form-control" name="titulo" placeholder="Titulo *" th:field="*{titulo}">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" name="author" placeholder="Autor *" th:field="*{author}">
+						</div>					
+						<textarea type="text" class="form-control" name="body" placeholder="Texto *" th:field="*{body}" style="height:400px"></textarea>
+						<small class="formtext text-muted" >(*) Campos obrigatórios</small>						
+						<a th:href="@{/Blog/{id}(id=${id})}" class="btn btn-light" role="button" style="margin-top:10px; float:right">Cancelar</a>
+						<button type="submit" class="btn btn-primary" style="margin-top:10px; float:right; margin-right:5px">Salvar</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</body>	
+</html>

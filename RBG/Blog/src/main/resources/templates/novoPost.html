@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Novo Post</title>
+		
+		<!-- CSS Blog -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<link href="/css/style.css" rel="stylesheet" >
+	</head>
+	
+	<body>
+		<header>			
+			<nav class="navbar navbar-light bg-light">					
+			  <div class="container-fluid">
+			  	<img src="/img/RBGlogo.png" style="width:10%; margin-left:20%">
+			  </div>			  
+			</nav>			
+		</header>
+		
+		<section>
+			<div class="container" >
+			
+				<nav aria-label="breadcrumb">
+				  <ol class="breadcrumb">
+				    <li class="breadcrumb-item " aria-current="page" ><a href="/Blog">Posts</a></li>
+				    <li class="breadcrumb-item active" aria-current="page" >Criar Post</li>
+				  </ol>
+				</nav>
+				<div>
+					<div class="alert alert-danger" role="alert" th:if="${not #strings.isEmpty(Erro)}" style="width:40%">
+					  <span th:text="${Erro}"></span>
+					</div>
+					<form method="post">			
+							<div class="form-group">
+								<input type="text" class="form-control" name="titulo" placeholder="Titulo *">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="author" placeholder="Autor *">
+							</div>					
+							<textarea type="text" class="form-control" name="body" placeholder="Texto *" style="height:400px"></textarea>
+							<small class="formtext text-muted" >(*) Campos obrigatórios</small>							
+							<a href="/Blog" class="btn btn-light" role="button" style="margin-top:10px; float:right">Cancelar</a>
+							<button type="submit" class="btn btn-primary" style="margin-top:10px; float:right; margin-right:5px">Postar</button>
+					</form>					
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

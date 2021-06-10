@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Post</title>
+		
+		<!-- CSS Blog -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<link href="/css/style.css" rel="stylesheet">
+	</head>
+	
+	<body>		
+		<header>
+			<nav class="navbar navbar-light bg-light">
+			  <div class="container-fluid">
+			    <img src="/img/RBGlogo.png" style="width:10%; margin-left:20%">
+			  </div>
+			</nav>
+		</header>
+		<div class="container">		
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item" aria-current="page"><a href="/Blog">Posts</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Post</li>
+			  </ol>
+			</nav>
+	     	<div class="card">
+			   <h1 class="card-title" style="font-weight: bold">
+					<span th:text="${post.titulo}"></span>
+					<a class="btn btn-primary" role="button" th:href="@{/Editar/{id}(id=${post.id})}" style="float:right; margin:5px" >Editar</a>
+			   </h1>		
+			    <h2 class="card-subtitle mb-2 text-muted">
+			    	<span th:text="${post.author}" style="font-size:27px"></span>
+			    	<span th:text="${post.DataCriacao}" style="font-size:27px; margin-left:70%"></span>
+				</h2>
+			    <section>
+				    <p class="card-text" style="height:400px; margin-top:20px; margin-left:5px; margin-right:5px">
+				    	<span class="align-middle" th:utext="${post.body}" ></span>
+					</p>
+				</section>	
+			</div>
+			<a class="btn btn-danger" role="button" th:href="@{/Excluir/{id}(id=${post.id})}" style="margin-top:10px; float: right">Excluir</a>						
+		</div> 
+	</body>	
+</html>
